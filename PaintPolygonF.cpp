@@ -4,16 +4,18 @@
 PaintPolygonF::PaintPolygonF(QWidget *widget)
     :QWidget()
 {
-
 }
 
 void PaintPolygonF::paintEvent(QPaintEvent *event)
 {
-    QWidget::paintEvent(event);
     QPainter p(this);
+    p.save();
+    p.translate(300, 200);
     p.setPen(Qt::black);
     p.drawPolygon(mPoly1);
     p.drawPolygon(mPoly2);
+    p.restore();
+    QWidget::paintEvent(event);
 }
 
 void PaintPolygonF::setPolygonF1(const QPolygonF &poly1)
